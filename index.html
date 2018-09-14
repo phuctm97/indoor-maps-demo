@@ -5,67 +5,75 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Bản đồ khu vực</title>
-  <link rel="shortcut icon" href="TemplateData/favicon.ico">
-  <link rel="stylesheet" href="TemplateData/style.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-  <script src="TemplateData/UnityProgress.js"></script>
-  <script src="Build/UnityLoader.js"></script>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" href="Web/css/libs/bootstrap.min.css">
+  <link rel="stylesheet" href="Web/css/style.css">
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light"> 
-     <a class="navbar-brand" href="https://www.uit.edu.vn/" target="_blank"> <img src="http://portal.uit.edu.vn/Styles/profi/images/logo186x150.png"
-      height="36" alt=""> </a> 
-      <a class="navbar-brand" href="#">Bản đồ khu vực</a> <button class="navbar-toggler" type="button"
-    data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-    aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse"
-    id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false"> Phiên bản 1.0.0 </a> <div class="dropdown-menu" aria-labelledby="navbarDropdown"> <a class="dropdown-item"
-            href="https://www.facebook.com/mphuc.tr?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
-            target="_blank">Trần Minh Phúc</a> <a class="dropdown-item" href="https://www.facebook.com/minhkien.ngo.uit" target="_blank">Ngô
-            Minh Kiên</a> <a class="dropdown-item" href="https://www.facebook.com/lehoangnam97?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
-            target="_blank">Lê Hoàng Nam</a> <a class="dropdown-item" href="https://www.facebook.com/levogiakhangst?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
-            target="_blank">Lê Võ Gia Khang</a> <a class="dropdown-item" href="https://www.facebook.com/phong.luc.5?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
-            target="_blank">Lục Trường Phong</a> <div style="align-items: center" class="dropdown-divider"></div>
-          <div class="dropdown-item"
-            href="#">
-            <div class="row"> <a class="col">Giảng viên hướng dẫn</a> <a class="col" href="https://www.facebook.com/ptvuong?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
-                target="_blank">Phạm Thi Vương</a> </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
 
 <body style="margin: 0; overflow: hidden">
-  <div style="width:100vw; height:calc(100vh - 75px);" id="gameContainer"></div>
-  <div id="loading" style="display: none; width: 100%; height: 100%; left: 0; top: 0; overflow: hidden; position: fixed;">
-  <img id="spinn" src="https://icons8.com/preloaders/img/favicons/favicon-194x194.png"> </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script>
-  $("#loading").hide(); 
-  var gameInstance = UnityLoader.instantiate("gameContainer", "Build/Web.json", { onProgress: UnityProgress }); 
-  window.addEventListener("resize", onResize); 
-  var timeouts = []; 
-  function onResize() { 
-    for (var i = 0; i < timeouts.length; i++) { clearTimeout(timeouts[i]); } 
-    timeouts = []; 
-    $("#gameContainer").hide();
-    $("#loading").show(); 
-    var id = setTimeout(function () { $("#gameContainer").show(); $("#loading").hide(); }, 500);
-    timeouts.push(id); 
-    gameInstance.SendMessage("DebugText", "SetWidth", window.innerWidth); 
-    gameInstance.SendMessage("DebugText", "SetHeight", window.innerHeight - 36); 
-    gameInstance.SendMessage("DebugText", "OnResize"); } 
-  </script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+
+  <head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="https://www.uit.edu.vn/" target="_blank">
+        <img src="favicon.svg" height="36" alt=""> </a>
+      <a class="navbar-brand text-bold" href="#">Bản đồ khu vực</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false"> Phiên bản 1.0.1 </a>
+            <div class="dropdown-menu" style="width: 250px" aria-labelledby="navbarDropdown">
+              <div class="container">
+                <div class="row mb-1">
+                  <a class="col">Nhóm phát triển</a>
+                </div>
+                <div class="row">
+                  <a class="dropdown-item" href="https://www.facebook.com/mphuc.tr?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
+                    target="_blank">Trần Minh Phúc</a>
+                  <a class="dropdown-item" href="https://www.facebook.com/minhkien.ngo.uit" target="_blank">Ngô
+                    Minh Kiên</a>
+                  <a class="dropdown-item" href="https://www.facebook.com/lehoangnam97?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
+                    target="_blank">Lê Hoàng Nam</a>
+                  <a class="dropdown-item" href="https://www.facebook.com/levogiakhangst?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
+                    target="_blank">Lê Võ Gia Khang</a>
+                  <a class="dropdown-item" href="https://www.facebook.com/phong.luc.5?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
+                    target="_blank">Lục Trường Phong</a>
+                </div>
+              </div>
+              <div style="align-items: center" class="dropdown-divider"></div>
+              <div class="container pl-3 pr-3 pt-1 pb-1" href="#">
+                <div class="row">
+                  <div class="col">
+                    <a>Giảng viên hướng dẫn</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <a href="https://www.facebook.com/ptvuong?fb_dtsg_ag=AdybeJL8RXnDdUxNtV6z0IBtXuzaHJZ8xFeKAAUKAr74MA%3AAdw-qp21M1PihUFJYUXV_831C4Z4pvDcSCkEWaFWPs3M3Q"
+                      target="_blank">Phạm Thi Vương</a> </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      </li>
+      </ul>
+      </div>
+    </nav>
+  </head>
+  <div id="gameContainer"></div>
+  <div id="loadingOverlay">
+    <p>Đang tải. Vui lòng đợi.</p>
+  </div>
+  </div>
+  <script src="Web/js/libs/jquery-3.3.1.slim.min.js"></script>
+  <script src="Web/js/libs/popper.min.js"></script>
+  <script src="Web/js/libs/bootstrap.min.js"></script>
+  <script src="Web/js/loading.js"></script>
+  <script src="Build/UnityLoader.js"></script>
+  <script src="Web/js/index.js"></script>
 </body>
+
 </html>
